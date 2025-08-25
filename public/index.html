@@ -8,7 +8,94 @@
 </head>
 
 <body>
-    
+    <h1>Faites un Don</h1>
+
+    <h2>Étape 1</h2>
+    <h2>Étape 2</h2>
+    <h2>Étape 3</h2>
+    <h2>Étape 4</h2>
+
+    <h3 class="h3">Montant</h3>
+    <button type="button">Don unique</button>
+    <button type="button">Don mensuel</button>
+    <div>
+        <label for="montant">Montant</label><br>
+        <input type="text" name="montant" id="montant" placeholder="0,00$" required>
+    </div>
+    <br>
+
+    <h3 class="h3">Information personnelle</h3>
+    <form action="">
+        <div>
+            <input type="radio" id="Personnel" name="perso_entreprise" value="Personnel">
+            <label for="Personnel">Personnel</label>
+
+            <input type="radio" id="Entreprise" name="perso_entreprise" value="Entreprise">
+            <label for="Entreprise">Entreprise</label><br>
+        </div>
+
+        <label for="prenom">Prénom</label><br>
+        <input type="text" id="prenom" name="prenom" required><br>
+
+        <label for="nom">Nom</label><br>
+        <input type="text" id="nom" name="nom" required><br>
+
+        <label for="telephone">Téléphone</label><br>
+        <input type="tel" id="telephone" name="telephone" placeholder="(000)000-0000" pattern="([0-9]{3}) [0-9]{3}-[0-9]{4}" required><br>
+
+        <label for="email">Courriel</label><br>
+        <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required><br>
+
+        <label for="entreprise">Nom d'entreprise</label><br>
+        <input type="text" id="entreprise" name="entreprise" required><br>
+
+        <fieldset>
+            <legend> Adresse </legend>
+
+            <label for="province">Province</label><br>
+            <select name="province" id="province">
+                <option value="aucuneValeur">Sélectionner la province</option>
+                <option value="quebec">Quebec</option>
+                <option value="alberta">Alberta</option>
+                <option value="colombie-britannique">Colombie-Britannique</option>
+                <option value="ile-du-prince-edouard">Île-du-Prince-Édouard</option>
+                <option value="manitoba">Manitoba</option>
+                <option value="nouveau-brunswick">Nouveau-Brunswick</option>
+                <option value="nouvelle-ecosse">Nouvelle-Écosse</option>
+                <option value="ontario">Ontario</option>
+                <option value="saskatchewan">Saskatchewan</option>
+                <option value="terre-neuve-et-labrador">Terre-Neuve-et-Labrador</option>
+            </select><br>
+
+            <label for="ville">Ville</label><br>
+            <input type="text" id="ville" name="ville" required><br>
+            <label for="Ncivique">Numéro civique</label><br>
+            <input type="text" id="Ncivique" name="Ncivique" required><br>
+            <label for="Nrue">Nom de rue</label><br>
+            <input type="text" id="Nrue" name="Nrue" required><br>
+            <label for="Cpostal">Code postal</label><br>
+            <input type="text" id="Cpostal" name="Cpostal" placeholder="A0A 0A0" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" required><br>
+
+        </fieldset>
+    </form>
+
+    <h3 class="h3">Paiement</h3>
+    <form action="">
+        <label for="numCarte">Numéro de la carte</label><br>
+        <input type="text" id="numCarte" name="numCarte" required><br>
+        <label for="expiration">Date d'expiration</label><br>
+        <input type="month" name="expiration" id="expiration" required><br>
+
+        <label for="codeSecurite">CVC</label><br>
+        <input type="text" id="codeSecurite" name="codeSecurite" placeholder="123" required><br>
+        
+        <label for="titulaire">Titulaire de la carte</label><br>
+        <input type="text" id="titulaire" name="titulaire" required>
+    </form><br>
+
+    <button type="button"> &#8249;	Précédent</button>
+    <button type="button">Suivant &#8250;</button>
+
 </body>
 
 </html>
