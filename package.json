@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "watch": "sass -watch src/scss:public/css",
-    "build": "sass src/scss:dist/css --style=expanded --source-map"
+    "watch": "sass --watch src/scss:public/css",
+    "build": "sass src/scss:public/css --style=expanded --source-map"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Morkyl29/RPNI3-TP1-formulaire/issues"
   },
-  "homepage": "https://github.com/Morkyl29/RPNI3-TP1-formulaire#readme"
+  "homepage": "https://github.com/Morkyl29/RPNI3-TP1-formulaire#readme",
+  "devDependencies": {
+    "normalize.scss": "^0.1.0"
+  }
 }
