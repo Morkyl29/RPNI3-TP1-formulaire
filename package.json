@@ -1,0 +1,21 @@
+{
+  "name": "tp1_formulaire",
+  "version": "1.0.0",
+  "description": "TP1 Formulaire",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "watch": "sass -watch src/scss:public/css",
+    "build": "sass src/scss:dist/css --style=expanded --source-map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Morkyl29/RPNI3-TP1-formulaire.git"
+  },
+  "author": "Morgane Thiebaut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Morkyl29/RPNI3-TP1-formulaire/issues"
+  },
+  "homepage": "https://github.com/Morkyl29/RPNI3-TP1-formulaire#readme"
+}
