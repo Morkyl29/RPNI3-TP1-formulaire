@@ -26,7 +26,7 @@
 
             <div>
                 <label for="montant">Montant</label><br>
-                <input type="text" name="montant" id="montant" placeholder="0,00$" required>
+                <input type="text" inputmode="decimal" name="montant" id="montant" placeholder="0,00$" required>
             </div>
         </section>
         
@@ -49,10 +49,10 @@
             <input type="text" id="nom" name="nom" required><br>
 
             <label for="telephone">Téléphone</label><br>
-            <input type="tel" id="telephone" name="telephone" placeholder="(000)000-0000" pattern="([0-9]{3}) [0-9]{3}-[0-9]{4}" required><br>
+            <input type="text" inputmode="tel" id="telephone" name="telephone" placeholder="(000)000-0000" pattern="([0-9]{3}) [0-9]{3}-[0-9]{4}" required><br>
 
             <label for="email">Courriel</label><br>
-            <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required><br>
+            <input type="email" inputmode="email" id="email" name="email" placeholder="exemple@gmail.com" required><br>
 
             <label for="entreprise">Nom d'entreprise</label><br>
             <input type="text" id="entreprise" name="entreprise" required><br>
@@ -78,7 +78,7 @@
                 <label for="ville">Ville</label><br>
                 <input type="text" id="ville" name="ville" required><br>
                 <label for="Ncivique">Numéro civique</label><br>
-                <input type="text" id="Ncivique" name="Ncivique" required><br>
+                <input type="text" inputmode="numeric" id="Ncivique" name="Ncivique" required><br>
                 <label for="Nrue">Nom de rue</label><br>
                 <input type="text" id="Nrue" name="Nrue" required><br>
                 <label for="Cpostal">Code postal</label><br>
@@ -90,12 +90,12 @@
         <section class="paiement">
             <h3 class="h3">Paiement</h3>
             <label for="numCarte">Numéro de la carte</label><br>
-            <input type="text" id="numCarte" name="numCarte" required><br>
+            <input type="text" inputmode="numeric" id="numCarte" name="numCarte" required><br>
             <label for="expiration">Date d'expiration</label><br>
             <input type="month" name="expiration" id="expiration" required><br>
 
             <label for="codeSecurite">CVC</label><br>
-            <input type="text" id="codeSecurite" name="codeSecurite" placeholder="123" required><br>
+            <input type="text" inputmode="numeric" id="codeSecurite" name="codeSecurite" placeholder="123" required><br>
             
             <label for="titulaire">Titulaire de la carte</label><br>
             <input type="text" id="titulaire" name="titulaire" required>
