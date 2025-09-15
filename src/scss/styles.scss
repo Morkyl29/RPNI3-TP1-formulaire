@@ -45,6 +45,27 @@
 
 /** MODULES **/
 
+@use "modules/styles_fiche";
+
 .cacher{
     display: none;
 }
+.erreur{
+    color: red;
+}
+input{
+    background-color: variables.$blanc;
+    border-style: solid;
+    border-color: variables.$bleuFoncer;
+}
+select{
+    background-color: variables.$blanc;
+    border-style: solid;
+    border-width: 2px;
+    border-color: variables.$bleuFoncer;
+}
+fieldset{
+    margin-bottom: 30px;
+
+}
+

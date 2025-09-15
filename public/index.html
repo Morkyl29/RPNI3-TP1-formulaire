@@ -10,116 +10,137 @@
 
 <body>
     <header>
-        <h1>Faites un Don</h1>
-
-        <h2>Montant</h2>
-        <h2>Infos</h2>
-        <h2>Paiement</h2>
-        <h2>Confirmation</h2>
+        <h1 class="header_h1">Faites un Don</h1>
+        
     </header>
+    <ul class="ul">
+        <li class="ul__li  li__element">Montant</li>
+        <li class="ul__li">&rsaquo;</li>
+        <li class="ul__li  li__element">Infos</li>
+        <li class="ul__li">&rsaquo;</li>
+        <li class="ul__li  li__element">Paiement</li>
+        <li class="ul__li">&rsaquo;</li>
+        <li class="ul__li  li__element">Confirmation</li>
+    </ul>
     
     <!-- Etape 1 -->
+    <main>
+        
+        <form action="merci.html" id="formulaire" class="formulaire">
+            <section id="etape1">
+                <h3 class="h3">Montant</h3>
+                <input type="radio" id="donUnique" name="don" value="donUnique">
+                <label for="donUnique">Don unique</label>
+                <input type="radio" id="donMensuel" name="don" value="donMensuel">
+                <label for="donMensuel">Don mensuel</label>
     
-    <form action="merci.html" id="formulaire">
-        <section id="etape1">
-            <h3 class="h3">Montant</h3>
-            <input type="radio" id="donUnique" name="don" value="donUnique">
-            <label for="donUnique">Don unique</label>
-            <input type="radio" id="donMensuel" name="don" value="donMensuel">
-            <label for="donMensuel">Don mensuel</label>
-
-            <div>
-                <label for="montant">Montant</label><br>
-                <input type="text" inputmode="decimal" name="montant" id="montant" placeholder="0,00$" required>
-            </div>
-        </section>
-        
-        <!-- Etape 2 -->
-
-        <section id="etape2">
-            <h3 class="h3">Information personnelle</h3>
-            <div>
-                <input type="radio" id="Personnel" name="perso_entreprise" value="Personnel">
-                <label for="Personnel">Personnel</label>
-
-                <input type="radio" id="Entreprise" name="perso_entreprise" value="Entreprise">
-                <label for="Entreprise">Entreprise</label><br>
-            </div>
-
-            <label for="prenom">Prénom</label><br>
-            <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
-            <div class="erreur" id="erreur-prenom" aria-live="polite"></div><br>
-
-            <label for="nom">Nom</label><br>
-            <input type="text" id="nom" name="nom" autocomplete="family-name" required>
-            <div class="erreur" id="erreur-nom" aria-live="polite"></div><br>
-
-            <label for="telephone">Téléphone</label><br>
-            <input type="text" inputmode="tel" id="telephone" name="telephone" placeholder="(000)000-0000" pattern="([0-9]{3}) [0-9]{3}-[0-9]{4}" autocomplete="tel" required>
-            <div class="erreur" id="erreur-tel" aria-live="polite"></div><br>
-
-            <label for="email">Courriel</label><br>
-            <input type="email" inputmode="email" id="email" name="email" placeholder="exemple@gmail.com" autocomplete="email" required>
-            <div class="erreur" id="erreur-email" aria-live="polite"></div><br>
-
-            <label for="entreprise">Nom d'entreprise</label><br>
-            <input type="text" id="entreprise" name="entreprise" required>
-            <div class="erreur" id="erreur-entreprise" aria-live="polite"></div><br>
-
-            <fieldset>
-                <legend> Adresse </legend>
-
-                <label for="province">Province</label><br>
-                <select name="province" id="province">
-                    <option value="aucuneValeur">Sélectionner la province</option>
-                    <option value="quebec">Quebec</option>
-                    <option value="alberta">Alberta</option>
-                    <option value="colombie-britannique">Colombie-Britannique</option>
-                    <option value="ile-du-prince-edouard">Île-du-Prince-Édouard</option>
-                    <option value="manitoba">Manitoba</option>
-                    <option value="nouveau-brunswick">Nouveau-Brunswick</option>
-                    <option value="nouvelle-ecosse">Nouvelle-Écosse</option>
-                    <option value="ontario">Ontario</option>
-                    <option value="saskatchewan">Saskatchewan</option>
-                    <option value="terre-neuve-et-labrador">Terre-Neuve-et-Labrador</option>
-                </select><br>
-
-                <label for="ville">Ville</label><br>
-                <input type="text" id="ville" name="ville" autocomplete="street-address" required><br>
-                <label for="Ncivique">Numéro civique</label><br>
-                <input type="text" inputmode="numeric" id="Ncivique" name="Ncivique" required><br>
-                <label for="Nrue">Nom de rue</label><br>
-                <input type="text" id="Nrue" name="Nrue" required><br>
-                <label for="Cpostal">Code postal</label><br>
-                <input type="text" id="Cpostal" name="Cpostal" placeholder="A0A 0A0" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" autocomplete="postal-code" required><br>
-
-            </fieldset>
-        </section>
-
-        <!-- Etape 3 -->
-
-        <section id="etape3">
-            <h3 class="h3">Paiement</h3>
-            <label for="titulaire">Titulaire de la carte</label><br>
-            <input type="text" id="titulaire" name="titulaire" autocomplete="cc-name" required><br>
-
-            <label for="numCarte">Numéro de la carte</label><br>
-            <input type="text" inputmode="numeric" id="numCarte" name="numCarte" autocomplete="cc-number" required><br>
-
-            <label for="expiration">Date d'expiration</label><br>
-            <input type="month" name="expiration" id="expiration" autocomplete="cc-exp" required><br>
-
-            <label for="codeSecurite">CVC</label><br>
-            <input type="text" inputmode="numeric" id="codeSecurite" name="codeSecurite" placeholder="1234" required pattern="[0-9]{4}"><br>
-        
-        </section>
-        
-        <!-- <br> -->
-    </form>
-
-    <button type="button" id="bouton-precedent" > &#8249;	Précédent</button>
-    <button type="button" id="bouton-suivant">Suivant &#8250;</button>
-    <button type="submit" id="bouton-soumettre">Soumettre</button>
+                <div>
+                    <label class="erreur" for="montant">Montant</label><br>
+                    <span class="span">0,00$</span><br>
+                    <input type="number" inputmode="decimal" name="montant" id="montant" pattern="^\d+(,\d{2})?$" required>
+                    <div class="erreur" id="erreur-montant" aria-live="polite"></div><br>
+                </div>
+            </section>
+            
+            <!-- Etape 2 -->
+    
+            <section id="etape2">
+                <h3 class="h3">Information personnelle</h3>
+                <div>
+                    <input type="radio" id="Personnel" name="perso_entreprise" value="Personnel">
+                    <label for="Personnel">Personnel</label>
+    
+                    <input type="radio" id="Entreprise" name="perso_entreprise" value="Entreprise">
+                    <label for="Entreprise">Entreprise</label><br>
+                </div>
+    
+                <label class="erreur" for="prenom" id="label-prenom">Prénom</label><br>
+                <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
+                <div class="erreur" id="erreur-prenom" aria-live="polite"></div><br>
+    
+                <label class="erreur" for="nom" id="label-nom">Nom</label><br>
+                <input type="text" id="nom" name="nom" autocomplete="family-name" required>
+                <div class="erreur" id="erreur-nom" aria-live="polite"></div><br>
+    
+                <label class="erreur" for="telephone" id="label-telephone">Téléphone</label><br>
+                <span class="span">(000)000-0000</span><br>
+                <input type="number" inputmode="tel" id="telephone" name="telephone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" autocomplete="tel" required>
+                <div class="erreur" id="erreur-telephone" aria-live="polite"></div><br>
+    
+                <label class="erreur" for="email" id="label-email">Courriel</label><br>
+                <span class="span">exemple@gmail.com</span><br>
+                <input type="email" inputmode="email" id="email" name="email" autocomplete="email" required>
+                <div class="erreur" id="erreur-email" aria-live="polite"></div><br>
+    
+                <label class="erreur" for="entreprise" id="label-entreprise">Nom d'entreprise</label><br>
+                <input type="text" id="entreprise" name="entreprise" required>
+                <div class="erreur" id="erreur-entreprise" aria-live="polite"></div><br>
+    
+                <fieldset>
+                    <legend> Adresse </legend>
+    
+                    <label class="erreur" for="nCivique">Numéro civique</label><br>
+                    <input type="number" inputmode="numeric" id="nCivique" name="nCivique" required><br>
+                    <div class="erreur" id="erreur-nCivique" aria-live="polite"></div><br>
+    
+                    <label class="erreur" for="nRue" id="label-nRue">Nom de rue</label><br>
+                    <input type="text" id="nRue" name="nRue" required><br>
+                    <div class="erreur" id="erreur-nRue" aria-live="polite"></div><br>
+    
+                    <label class="erreur" for="ville" id="label-ville">Ville</label><br>
+                    <input type="text" id="ville" name="ville" autocomplete="street-address" required><br>
+                    <div class="erreur" id="erreur-ville" aria-live="polite"></div><br>
+    
+                    <label for="province">Province</label><br>
+                    <select name="province" id="province">
+                        <option value="aucuneValeur">Sélectionner la province</option>
+                        <option value="quebec">Quebec</option>
+                        <option value="alberta">Alberta</option>
+                        <option value="colombie-britannique">Colombie-Britannique</option>
+                        <option value="ile-du-prince-edouard">Île-du-Prince-Édouard</option>
+                        <option value="manitoba">Manitoba</option>
+                        <option value="nouveau-brunswick">Nouveau-Brunswick</option>
+                        <option value="nouvelle-ecosse">Nouvelle-Écosse</option>
+                        <option value="ontario">Ontario</option>
+                        <option value="saskatchewan">Saskatchewan</option>
+                        <option value="terre-neuve-et-labrador">Terre-Neuve-et-Labrador</option>
+                    </select><br>
+    
+                    <label class="erreur" for="cPostal" id="label-cPostal">Code postal</label><br>
+                    <span class="span">A0A 0A0</span><br>
+                    <input type="text" id="cPostal" name="cPostal" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" autocomplete="postal-code" required><br>
+                    <div class="erreur" id="erreur-cPostal" aria-live="polite"></div><br>
+    
+                </fieldset>
+            </section>
+    
+            <!-- Etape 3 -->
+    
+            <section id="etape3">
+                <h3 class="h3">Paiement</h3>
+                <label for="titulaire" id="label-titulaire">Titulaire de la carte</label><br>
+                <input type="text" id="titulaire" name="titulaire" autocomplete="cc-name" required><br>
+    
+                <label for="numCarte" id="label-numCarte">Numéro de la carte</label><br>
+                <input type="text" inputmode="numeric" id="numCarte" name="numCarte" autocomplete="cc-number" required><br>
+    
+                <label for="expiration" id="label-expiration">Date d'expiration</label><br>
+                <input type="month" name="expiration" id="expiration" autocomplete="cc-exp" required><br>
+    
+                <label for="codeSecurite" id="label-codeSecurite">CVC</label><br>
+                <span class="codeSecurite_span">1234</span><br>
+                <input type="number" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{4}"><br>
+            
+            </section>
+            
+            <!-- <br> -->
+        </form>
+    
+        <button type="button" id="bouton-precedent" class="btn"> &#8249; Précédent</button>
+        <button type="button" id="bouton-suivant" class="btn">Suivant &#8250;</button>
+        <button type="submit" id="bouton-soumettre" class="btn">Soumettre</button>
+    </main>
+    
 
 </body>
 

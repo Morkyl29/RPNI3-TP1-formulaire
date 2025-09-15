@@ -1,20 +1,44 @@
 {
+    "montant": {
+        "vide": "Veuillez saisir un montant pour votre don"
+    },
     "prenom": {
         "vide": "Vous devez entrer votre prénom.",
-        "pattern": "Pour le prénom, les accents français, les espaces, les tirets et les apostrophes sont permis."
+        "pattern": "Pour le prénom, les accents français, les espaces, les tirets et les apostrophes sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
     },
     "nom": {
         "vide": "Vous devez entrer votre nom de famille.",
-        "pattern": "Pour le nom de famille, les accents français, les espaces, les tirets et les apostrophes sont permis."
+        "pattern": "Pour le nom de famille, les accents français, les espaces, les tirets et les apostrophes sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
     },
-    "courriel": {
+    "email": {
         "vide": "Vous devez entrer votre adresse courriel.",
-        "pattern": "Assurez-vous d'entrer une adresse courriel valide."
+        "pattern": "Assurez-vous d'entrer une adresse courriel valide.",
+        "type": "Vous ne rentrez pas le bon type.",
+        "tldSuspicieux": "Cette adresse est suspicieuse"
     },
-    "sujet": {
-        "vide": "Vous devez entrer un sujet.",
-        "pattern": "Entrez une sujet valide."
+    "ville":{
+        "vide": "Vous devez entrer votre ville.",
+        "pattern": "Pour la ville, les accents français, les espaces, les tirets et les apostrophes sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
     },
+    "nCivique":{
+        "vide": "Vous devez entrer votre numéro civique.",
+        "pattern": "Pour le numéro civique, les chiffres sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
+    },
+    "nRue":{
+        "vide": "Vous devez entrer votre numéro de rue.",
+        "pattern": "Pour le numéro de rue, les espaces, les tirets et les apostrophes sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
+    },
+    "cPostal":{
+        "vide": "Vous devez entrer votre code postal.",
+        "pattern": "Pour le code postal, les espaces, les chiffres sont permis.",
+        "type": "Vous ne rentrez pas le bon type."
+    },
+    
     "message": {
         "vide": "Entrez un message."
     }

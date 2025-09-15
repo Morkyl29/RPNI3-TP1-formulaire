@@ -1,0 +1,62 @@
+@use "sass:color";
+@use "../utilitaires/variables";
+
+header{
+    background-color: blue;
+    margin: 0;
+    border-radius: 0 0 20px 20px;
+}
+.header_h1{
+    text-align: center;
+    margin: 0;
+    padding: 30px 10px;
+    color: variables.$blanc;
+}
+
+// liste formulaire d'étape
+.ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    @media( min-width: 600px){
+        padding: 0 60px;
+    }
+}
+// .etapeSelectionner{
+    
+// }
+.ul__li{
+    padding: 10px;
+}
+.li__element{
+    background-color: black;
+    color: variables.$blanc;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+
+.formulaire{
+    
+}
+
+
+
+legend{
+    padding: 10px;
+}
+
+
+
+
+.span{
+    color: variables.$bleuClair;
+}
+button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
