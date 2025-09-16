@@ -5,9 +5,11 @@ let btnSuivant;
 let btnPrecedent;
 let btnSoumettre;
 let section;
+let navEtapes;
 let messagesJSON;
 function afficherEtape(etape) {
     const etapes = document.querySelectorAll('section');
+    console.log(etapes);
     cacherSection();
     if (etape >= 0 && etape < etapes.length) {
         etapes[etape].classList.remove('cacher');
@@ -24,6 +26,11 @@ function afficherEtape(etape) {
     }
     else if (etape === 2) {
         btnPrecedent?.classList.remove('cacher');
+        btnSuivant?.classList.remove('cacher');
+        btnSoumettre?.classList.add('cacher');
+    }
+    else if (etape === 3) {
+        btnPrecedent?.classList.remove('cacher');
         btnSuivant?.classList.add('cacher');
         btnSoumettre?.classList.remove('cacher');
     }
@@ -36,6 +43,20 @@ function cacherSection() {
 function naviguerSuivant(event) {
     event.preventDefault();
     if (validerEtape(etape)) {
+        const lien = navEtapes[etape + 1].querySelector('a');
+        const lienPrecedent = navEtapes[etape].querySelector('a');
+        console.log(lien);
+        if (lien) {
+            lien.ariaDisabled = "false";
+            lien.classList.remove("etapes__item--inactive");
+            lien.classList.remove("inactive");
+            lien.classList.add("etapes__item--active");
+        }
+        if (lienPrecedent) {
+            lienPrecedent.ariaDisabled = "false";
+            lienPrecedent.classList.add("etapes__item--inactive");
+            lienPrecedent.classList.remove("etapes__item--active");
+        }
         etape++;
         afficherEtape(etape);
     }
@@ -44,6 +65,20 @@ function naviguerPrecedent(event) {
     console.log('naviguerPrecedent');
     if (etape > 0) {
         etape--;
+        navEtapes.forEach((li, event) => {
+            const lien = li.querySelector('a');
+            if (event > etape) {
+                lien.ariaDisabled = "true";
+                // lien.classList.add("inactive");
+                lien.classList.remove("etapes__item--active");
+                lien.classList.add("etapes__item--inactive");
+            }
+            else {
+                lien.classList.remove("inactive");
+                lien.classList.add("etapes__item--active");
+                lien.classList.remove("etapes__item--inactive");
+            }
+        });
         afficherEtape(etape);
     }
 }
@@ -171,12 +206,27 @@ function validerEtape(etape) {
             //     etapeValide = validerChamps(emailElement); 
             // }
             break;
+        case 2:
+            etapeValide = true;
+            break;
     }
     return etapeValide;
 }
 ;
 function initialiser() {
     const formulaire = document.getElementById("formulaire");
+    navEtapes = document.querySelectorAll('.etapes__li');
+    navEtapes.forEach((li, event) => {
+        const lien = li.querySelector('a');
+        if (event === 0) {
+            lien.ariaDisabled = "false";
+            lien.classList.remove("inactive");
+        }
+        else {
+            lien.ariaDisabled = "true";
+            lien.classList.add("inactive");
+        }
+    });
     if (formulaire) {
         formulaire.noValidate = true;
     }

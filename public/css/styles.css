@@ -500,20 +500,63 @@ button:focus {
 * @author Prenom Nom courriel
 * @todo Compléter selon l'énoncé de l'exercice
 */
-.hyperlien {
-  color: #2678B5;
+.etapes__ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-between;
+  padding: 0;
+  margin: 3% 5%;
+}
+@media (min-width: 600px) {
+  .etapes__ul {
+    padding: 0;
+    margin: 2% 10%;
+  }
+}
+
+.etapes__item {
+  color: #233446;
+  cursor: pointer; /* C'est la valeur par défaut */
+}
+
+.etapes__item--inactive {
+  color: #233446;
+  pointer-events: none; /* Les événements de pointeurs et de curseurs ne seront pas honorés */
+  cursor: not-allowed; /* Autre option - cursor: default; */
   text-decoration: none;
 }
-.hyperlien--visited {
-  color: rgb(33.5753424658, 106.0273972603, 159.9246575342);
+
+.etapes__item--active {
+  color: #F0F4F8;
+  text-decoration: none;
+  background-color: #233446;
+  border-radius: 15px;
+  padding: 10px;
 }
-.hyperlien--hover {
-  color: rgb(20.301369863, 64.1095890411, 96.698630137);
-  text-decoration: underline;
-}
-.hyperlien--active {
-  color: #bbd531;
-  text-decoration: underline;
+
+/* 
+* HORS-ÉCRAN - cacher un élément tout en le gardant accessible 
+*
+* Vous pouvez copier cette classe dans votre code 
+* C'est une classe CSS commune mais assez complexe qui permet
+* de cacher visuellement un élément sans le désactiver au niveau
+* de l'arbre HTML et donc préserve son accessibilité. 
+* 
+* On n'oublie pas! display:none; enlève l'élément de l'arbre
+* d'accessibilité alors il ne faut PAS l'utiliser  pour cacher
+* un élément qui devrait être accessible. Utilisez plutôt cette classe
+*/
+.hors-ecran {
+  position: absolute; /* Position absolue pour l'enlver du "flow" commun du document */
+  width: 1px; /* 1px de large parce que zéro l'enlève de l'arbre d'accessibilité */
+  height: 1px; /* 1px de haut parce que zéro l'enlève de l'arbre d'accessibilité */
+  padding: 0; /* Aucun padding pour éviter que l'élément soit visible malgré sa largeur et son hauteur */
+  margin: -1px; /* Marge négative de 1px pour annuler le 1px de haut et de large */
+  overflow: hidden; /* Le contenu de l'élément doit ne pas dépasser du modèle de boîte (box model) pour qu'il reste invisible */
+  clip-path: inset(50%); /* Un masque clip-path qui force encore plus l'invisibilité de l'élément */
+  white-space: nowrap; /* Empêche les bris de ligne pour éviter que le texte de l'élément ne pousse d'autre contenu */
+  border-width: 0; /* On annule aussi les bordures */
 }
 
 /** UTILITAIRES **/
@@ -644,15 +687,31 @@ header {
   }
 }
 
-.ul__li {
-  padding: 10px;
+.formulaire {
+  width: 100%;
+  margin: auto;
+  align-items: center;
 }
 
-.li__element {
-  background-color: black;
-  color: #F0F4F8;
-  padding: 10px;
-  border-radius: 20px;
+section {
+  width: 30%;
+  margin: auto;
+}
+
+input {
+  width: 100%;
+  margin: auto;
+}
+
+.radio_don {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.radio__label {
+  width: 90%;
 }
 
 legend {
@@ -667,6 +726,15 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.inactive {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.etape4__img {
+  width: 100%;
 }
 
 .cacher {

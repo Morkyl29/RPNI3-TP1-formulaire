@@ -13,15 +13,41 @@
         <h1 class="header_h1">Faites un Don</h1>
         
     </header>
-    <ul class="ul">
-        <li class="ul__li  li__element">Montant</li>
-        <li class="ul__li">&rsaquo;</li>
-        <li class="ul__li  li__element">Infos</li>
-        <li class="ul__li">&rsaquo;</li>
-        <li class="ul__li  li__element">Paiement</li>
-        <li class="ul__li">&rsaquo;</li>
-        <li class="ul__li  li__element">Confirmation</li>
-    </ul>
+
+    <nav class="etapes">
+        <ul class="etapes__ul">
+            <li class="etapes__li">
+                <!-- La valeur href de l'ancre doit être le ID de la section où le focus sera mis lorsqu'on clique dessus SANS JavaScript -->
+                <a class="etapes__item etapes__item--active" aria-current="step" href="#etape1">
+                  <span class="hors-ecran">Montant</span>
+                  Montant
+                </a>
+            </li>
+            <li class="ul__li">&rsaquo;</li>
+            <li class="etapes__li">
+                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape2">
+                  <span class="hors-ecran">Infos</span>
+                  Infos
+                </a>
+            </li>
+             <li class="ul__li">&rsaquo;</li>
+
+            <li class="etapes__li">
+                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape3">
+                  <span class="hors-ecran">Paiement</span>
+                  Paiement
+                </a>
+            </li>
+            <li class="ul__li">&rsaquo;</li>
+
+            <li class="etapes__li">
+                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape4">
+                  <span class="hors-ecran">Confirmation</span>
+                  Confirmation
+                </a>
+            </li>
+        </ol>
+    </nav>
     
     <!-- Etape 1 -->
     <main>
@@ -29,10 +55,14 @@
         <form action="merci.html" id="formulaire" class="formulaire">
             <section id="etape1">
                 <h3 class="h3">Montant</h3>
-                <input type="radio" id="donUnique" name="don" value="donUnique">
-                <label for="donUnique">Don unique</label>
-                <input type="radio" id="donMensuel" name="don" value="donMensuel">
-                <label for="donMensuel">Don mensuel</label>
+                <div class="radio_don">
+                    <input type="radio" class="radio__input" id="donUnique" name="don" value="donUnique">
+                    <label class="radio__label" for="donUnique">Don unique</label>
+
+                    <input type="radio" class="radio__input" id="donMensuel" name="don" value="donMensuel">
+                    <label class="radio__label" for="donMensuel">Don mensuel</label>
+                </div>
+                
     
                 <div>
                     <label class="erreur" for="montant">Montant</label><br>
@@ -46,12 +76,12 @@
     
             <section id="etape2">
                 <h3 class="h3">Information personnelle</h3>
-                <div>
-                    <input type="radio" id="Personnel" name="perso_entreprise" value="Personnel">
-                    <label for="Personnel">Personnel</label>
+                <div class="radio_don">
+                    <input type="radio" class="radio__input" id="Personnel" name="perso_entreprise" value="Personnel">
+                    <label class="radio__label" for="Personnel">Personnel</label>
     
-                    <input type="radio" id="Entreprise" name="perso_entreprise" value="Entreprise">
-                    <label for="Entreprise">Entreprise</label><br>
+                    <input type="radio" class="radio__input" id="Entreprise" name="perso_entreprise" value="Entreprise">
+                    <label class="radio__label" for="Entreprise">Entreprise</label><br>
                 </div>
     
                 <label class="erreur" for="prenom" id="label-prenom">Prénom</label><br>
@@ -80,15 +110,15 @@
                     <legend> Adresse </legend>
     
                     <label class="erreur" for="nCivique">Numéro civique</label><br>
-                    <input type="number" inputmode="numeric" id="nCivique" name="nCivique" required><br>
+                    <input type="number" inputmode="numeric" id="nCivique" name="nCivique" autocomplete="address-level3" required><br>
                     <div class="erreur" id="erreur-nCivique" aria-live="polite"></div><br>
     
                     <label class="erreur" for="nRue" id="label-nRue">Nom de rue</label><br>
-                    <input type="text" id="nRue" name="nRue" required><br>
+                    <input type="text" id="nRue" name="nRue" autocomplete="address-level3" required><br>
                     <div class="erreur" id="erreur-nRue" aria-live="polite"></div><br>
     
                     <label class="erreur" for="ville" id="label-ville">Ville</label><br>
-                    <input type="text" id="ville" name="ville" autocomplete="street-address" required><br>
+                    <input type="text" id="ville" name="ville" autocomplete="address-level2" required><br>
                     <div class="erreur" id="erreur-ville" aria-live="polite"></div><br>
     
                     <label for="province">Province</label><br>
@@ -108,7 +138,7 @@
     
                     <label class="erreur" for="cPostal" id="label-cPostal">Code postal</label><br>
                     <span class="span">A0A 0A0</span><br>
-                    <input type="text" id="cPostal" name="cPostal" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" autocomplete="postal-code" required><br>
+                    <input type="text" id="cPostal" name="cPostal" pattern="[A-Za-z][0-9][A-Za-z]\s?\[0-9][A-Za-z][0-9]" autocomplete="postal-code" required><br>
                     <div class="erreur" id="erreur-cPostal" aria-live="polite"></div><br>
     
                 </fieldset>
@@ -132,13 +162,23 @@
                 <input type="number" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{4}"><br>
             
             </section>
+
+            <!-- section 4 confirmation  -->
+
+            <section id="etape4">
+                <img src="../src/img/img_chat.JPG" alt="image chat" class="etape4__img">
+                <ul class="etape4__ul">
+
+                </ul>
+
+            </section>
             
             <!-- <br> -->
+            <button type="submit" id="bouton-soumettre" class="btn_submit">Soumettre</button>
         </form>
     
         <button type="button" id="bouton-precedent" class="btn"> &#8249; Précédent</button>
         <button type="button" id="bouton-suivant" class="btn">Suivant &#8250;</button>
-        <button type="submit" id="bouton-soumettre" class="btn">Soumettre</button>
     </main>
     
 
