@@ -56,6 +56,39 @@ function cacherSection(){
     });
 }
 
+// etape 4 avec les confirmations 
+
+function confirmerEtape(): void {
+    const ul = document.querySelector('.etape4__ul') as HTMLUListElement;
+    const formulaire = document.getElementById("formulaire") as HTMLFormElement;
+
+    if (!ul || !formulaire) return;
+
+    // Vider la liste avant de la remplir
+    ul.innerHTML = "";
+
+    // Récupérer tous les champs du formulaire
+    const champs = formulaire.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("input, select, textarea");
+
+    champs.forEach((champ) => {
+        let valeur = "";
+
+        if (champ.type === "checkbox" || champ.type === "radio") {
+            if (!(champ as HTMLInputElement).checked) return; // on saute ceux non cochés
+            valeur = champ.value;
+        } else {
+            valeur = champ.value;
+        }
+
+        // On ignore les champs cachés
+        if (champ.classList.contains("cacher")) return;
+
+        let li = document.createElement("li");
+        li.textContent = `${champ.name || champ.id} : ${valeur}`;
+        ul.appendChild(li);
+    });
+}
+
 function naviguerSuivant(event: MouseEvent):void{
     event.preventDefault(); 
     
@@ -76,8 +109,12 @@ function naviguerSuivant(event: MouseEvent):void{
         }
 
         etape++;
+        if (etape === 3) {
+            confirmerEtape();
+        }
         afficherEtape(etape);
     }
+    
     
 }
 function naviguerPrecedent(event: MouseEvent):void{
@@ -107,7 +144,6 @@ function naviguerPrecedent(event: MouseEvent):void{
 async function obtenirMessage(){
     const response = await fetch('objJSONMessages.json');
     messagesJSON = await response.json();
-
 };
 
 function validerChamps(champ: HTMLInputElement): boolean{
@@ -193,8 +229,25 @@ function validerEmail(champ:HTMLInputElement): boolean{
         valide = true;
     }
     return valide;
-
 }
+
+function cocherEntreprise(){
+    let entreprise = document.getElementById('entreprise') as HTMLInputElement;
+    let champEntreprise = document.getElementById('entrepriseInput') as HTMLInputElement;
+    let labelEntreprise = document.getElementById('label-entreprise') as HTMLLabelElement;
+    console.log(entreprise.checked);
+
+    if (entreprise && entreprise.checked) {
+        console.log('La case est cochée !');
+        champEntreprise.classList.remove('cacher');
+        labelEntreprise.classList.remove('cacher');
+    } else {
+        console.log('La case n\'est pas cochée.');
+        champEntreprise.classList.add('cacher');
+        labelEntreprise.classList.add('cacher');
+    }
+}
+
 
 function validerEtape(etape:number): boolean{
     let etapeValide = false;
@@ -225,26 +278,25 @@ function validerEtape(etape:number): boolean{
             && validerChamps(nCiviqueElement)
             && validerChamps(nRueElement)
             && validerChamps(cPostalElement)
-            ;
-            // if(etapeValide){
-            //     etapeValide = validerChamps(prenomElement);
-            // } 
-            // if(etapeValide){
-            //     etapeValide = validerChamps(nomElement);
-            // } 
-            // if(etapeValide){ 
-            //     etapeValide = validerChamps(telephoneElement); 
-            // } if(etapeValide){ 
-            //     etapeValide = validerChamps(emailElement); 
-            // }
 
         break;
         case 2:
-            etapeValide =true
+            let titulaireElement = document.getElementById('titulaire')as HTMLInputElement;;
+            let numCarteElement = document.getElementById('numCarte')as HTMLInputElement;
+            let dateExpirationElement = document.getElementById('expiration')as HTMLInputElement;
+            let cvcElement = document.getElementById('codeSecurite')as HTMLInputElement;
+
+            etapeValide =
+            validerChamps(titulaireElement)
+            && validerChamps(numCarteElement)
+            && validerChamps(dateExpirationElement)
+            && validerChamps(cvcElement)
+
             break;
     }
     return etapeValide;
 };
+
 
 function initialiser():void{
     const formulaire: HTMLFormElement | null = document.getElementById("formulaire") as HTMLFormElement;
@@ -261,9 +313,7 @@ function initialiser():void{
             lien.ariaDisabled = "true";
             lien.classList.add("inactive");
         }
-        
     });
-
 
     if(formulaire){
         formulaire.noValidate = true
@@ -286,6 +336,15 @@ function initialiser():void{
         btnSuivant.addEventListener('click', naviguerSuivant);
     };
 
+    let entreprise = document.getElementById('entreprise') as HTMLInputElement;
+    if (entreprise) {
+        entreprise.addEventListener("click", cocherEntreprise);
+    }
+    let personnel = document.getElementById('personnel') as HTMLInputElement;
+    if (personnel) {
+        personnel.addEventListener("click", cocherEntreprise);
+    }
+
     afficherEtape(0);
     obtenirMessage()
 }
@@ -293,5 +352,4 @@ function initialiser():void{
 
 document.addEventListener('DOMContentLoaded', ():void => {
     initialiser();
-
 })

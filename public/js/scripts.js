@@ -40,6 +40,34 @@ function cacherSection() {
         maSection.classList.add('cacher');
     });
 }
+// etape 4 avec les confirmations 
+function confirmerEtape() {
+    const ul = document.querySelector('.etape4__ul');
+    const formulaire = document.getElementById("formulaire");
+    if (!ul || !formulaire)
+        return;
+    // Vider la liste avant de la remplir
+    ul.innerHTML = "";
+    // Récupérer tous les champs du formulaire
+    const champs = formulaire.querySelectorAll("input, select, textarea");
+    champs.forEach((champ) => {
+        let valeur = "";
+        if (champ.type === "checkbox" || champ.type === "radio") {
+            if (!champ.checked)
+                return; // on saute ceux non cochés
+            valeur = champ.value;
+        }
+        else {
+            valeur = champ.value;
+        }
+        // On ignore les champs cachés
+        if (champ.classList.contains("cacher"))
+            return;
+        let li = document.createElement("li");
+        li.textContent = `${champ.name || champ.id} : ${valeur}`;
+        ul.appendChild(li);
+    });
+}
 function naviguerSuivant(event) {
     event.preventDefault();
     if (validerEtape(etape)) {
@@ -58,6 +86,9 @@ function naviguerSuivant(event) {
             lienPrecedent.classList.remove("etapes__item--active");
         }
         etape++;
+        if (etape === 3) {
+            confirmerEtape();
+        }
         afficherEtape(etape);
     }
 }
@@ -168,6 +199,22 @@ function validerEmail(champ) {
     }
     return valide;
 }
+function cocherEntreprise() {
+    let entreprise = document.getElementById('entreprise');
+    let champEntreprise = document.getElementById('entrepriseInput');
+    let labelEntreprise = document.getElementById('label-entreprise');
+    console.log(entreprise.checked);
+    if (entreprise && entreprise.checked) {
+        console.log('La case est cochée !');
+        champEntreprise.classList.remove('cacher');
+        labelEntreprise.classList.remove('cacher');
+    }
+    else {
+        console.log('La case n\'est pas cochée.');
+        champEntreprise.classList.add('cacher');
+        labelEntreprise.classList.add('cacher');
+    }
+}
 function validerEtape(etape) {
     let etapeValide = false;
     switch (etape) {
@@ -194,20 +241,18 @@ function validerEtape(etape) {
                     && validerChamps(nCiviqueElement)
                     && validerChamps(nRueElement)
                     && validerChamps(cPostalElement);
-            // if(etapeValide){
-            //     etapeValide = validerChamps(prenomElement);
-            // } 
-            // if(etapeValide){
-            //     etapeValide = validerChamps(nomElement);
-            // } 
-            // if(etapeValide){ 
-            //     etapeValide = validerChamps(telephoneElement); 
-            // } if(etapeValide){ 
-            //     etapeValide = validerChamps(emailElement); 
-            // }
             break;
         case 2:
-            etapeValide = true;
+            let titulaireElement = document.getElementById('titulaire');
+            ;
+            let numCarteElement = document.getElementById('numCarte');
+            let dateExpirationElement = document.getElementById('expiration');
+            let cvcElement = document.getElementById('codeSecurite');
+            etapeValide =
+                validerChamps(titulaireElement)
+                    && validerChamps(numCarteElement)
+                    && validerChamps(dateExpirationElement)
+                    && validerChamps(cvcElement);
             break;
     }
     return etapeValide;
@@ -244,6 +289,14 @@ function initialiser() {
         btnSuivant.addEventListener('click', naviguerSuivant);
     }
     ;
+    let entreprise = document.getElementById('entreprise');
+    if (entreprise) {
+        entreprise.addEventListener("click", cocherEntreprise);
+    }
+    let personnel = document.getElementById('personnel');
+    if (personnel) {
+        personnel.addEventListener("click", cocherEntreprise);
+    }
     afficherEtape(0);
     obtenirMessage();
 }

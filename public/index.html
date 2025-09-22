@@ -77,10 +77,10 @@
             <section id="etape2">
                 <h3 class="h3">Information personnelle</h3>
                 <div class="radio_don">
-                    <input type="radio" class="radio__input" id="Personnel" name="perso_entreprise" value="Personnel">
+                    <input type="radio" class="radio__input" id="personnel" name="perso_entreprise" value="Personnel">
                     <label class="radio__label" for="Personnel">Personnel</label>
     
-                    <input type="radio" class="radio__input" id="Entreprise" name="perso_entreprise" value="Entreprise">
+                    <input type="radio" class="radio__input" id="entreprise" name="perso_entreprise" value="Entreprise">
                     <label class="radio__label" for="Entreprise">Entreprise</label><br>
                 </div>
     
@@ -94,7 +94,7 @@
     
                 <label class="erreur" for="telephone" id="label-telephone">Téléphone</label><br>
                 <span class="span">(000)000-0000</span><br>
-                <input type="number" inputmode="tel" id="telephone" name="telephone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" autocomplete="tel" required>
+                <input type="number" inputmode="tel" id="telephone" class="input_tel" name="telephone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" autocomplete="tel" required>
                 <div class="erreur" id="erreur-telephone" aria-live="polite"></div><br>
     
                 <label class="erreur" for="email" id="label-email">Courriel</label><br>
@@ -102,15 +102,15 @@
                 <input type="email" inputmode="email" id="email" name="email" autocomplete="email" required>
                 <div class="erreur" id="erreur-email" aria-live="polite"></div><br>
     
-                <label class="erreur" for="entreprise" id="label-entreprise">Nom d'entreprise</label><br>
-                <input type="text" id="entreprise" name="entreprise" required>
+                <label class="erreur cacher" for="entreprise" id="label-entreprise" class="cacher">Nom d'entreprise</label><br>
+                <input type="text" id="entrepriseInput" name="entreprise" class="cacher" required>
                 <div class="erreur" id="erreur-entreprise" aria-live="polite"></div><br>
     
                 <fieldset>
                     <legend> Adresse </legend>
     
                     <label class="erreur" for="nCivique">Numéro civique</label><br>
-                    <input type="number" inputmode="numeric" id="nCivique" name="nCivique" autocomplete="address-level3" required><br>
+                    <input type="number" inputmode="numeric" id="nCivique" name="nCivique" autocomplete="address-level3" class="input_nCivique" required><br>
                     <div class="erreur" id="erreur-nCivique" aria-live="polite"></div><br>
     
                     <label class="erreur" for="nRue" id="label-nRue">Nom de rue</label><br>
@@ -122,8 +122,8 @@
                     <div class="erreur" id="erreur-ville" aria-live="polite"></div><br>
     
                     <label for="province">Province</label><br>
-                    <select name="province" id="province">
-                        <option value="aucuneValeur">Sélectionner la province</option>
+                    <select name="province" id="province" required>
+                        <option>Sélectionner la province</option>
                         <option value="quebec">Quebec</option>
                         <option value="alberta">Alberta</option>
                         <option value="colombie-britannique">Colombie-Britannique</option>
@@ -138,7 +138,7 @@
     
                     <label class="erreur" for="cPostal" id="label-cPostal">Code postal</label><br>
                     <span class="span">A0A 0A0</span><br>
-                    <input type="text" id="cPostal" name="cPostal" pattern="[A-Za-z][0-9][A-Za-z]\s?\[0-9][A-Za-z][0-9]" autocomplete="postal-code" required><br>
+                    <input type="text" id="cPostal" name="cPostal" pattern="[A-Za-z][0-9][A-Za-z]\s?\[0-9][A-Za-z][0-9]" autocomplete="postal-code" class="input__postal" required><br>
                     <div class="erreur" id="erreur-cPostal" aria-live="polite"></div><br>
     
                 </fieldset>
@@ -150,16 +150,20 @@
                 <h3 class="h3">Paiement</h3>
                 <label for="titulaire" id="label-titulaire">Titulaire de la carte</label><br>
                 <input type="text" id="titulaire" name="titulaire" autocomplete="cc-name" required><br>
+                <div class="erreur" id="erreur-titulaire" aria-live="polite"></div><br>
     
                 <label for="numCarte" id="label-numCarte">Numéro de la carte</label><br>
                 <input type="text" inputmode="numeric" id="numCarte" name="numCarte" autocomplete="cc-number" required><br>
+                <div class="erreur" id="erreur-numCarte" aria-live="polite"></div><br>
     
                 <label for="expiration" id="label-expiration">Date d'expiration</label><br>
                 <input type="month" name="expiration" id="expiration" autocomplete="cc-exp" required><br>
+                <div class="erreur" id="erreur-expiration" aria-live="polite"></div><br>
     
                 <label for="codeSecurite" id="label-codeSecurite">CVC</label><br>
-                <span class="codeSecurite_span">1234</span><br>
-                <input type="number" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{4}"><br>
+                <span class="span">1234</span><br>
+                <input type="number" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{4}" class="input__codeSecu"><br>
+                <div class="erreur" id="erreur-codeSecurite" aria-live="polite"></div><br>
             
             </section>
 
@@ -173,7 +177,6 @@
 
             </section>
             
-            <!-- <br> -->
             <button type="submit" id="bouton-soumettre" class="btn_submit">Soumettre</button>
         </form>
     
