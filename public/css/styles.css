@@ -661,10 +661,23 @@ main {
 
 /** MODULES **/
 /** UTILITAIRES **/
+main {
+  padding-bottom: 30px;
+}
+
 header {
   background-color: blue;
   margin: 0;
   border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+svg {
+  width: 20%;
+  padding: 30px 30px;
 }
 
 .header_h1 {
@@ -703,7 +716,21 @@ section {
   }
 }
 
+.montant__div {
+  display: flex;
+  flex-direction: row;
+}
+
+.montant__input {
+  width: 20%;
+}
+
+.montant__dollard {
+  width: 80%;
+}
+
 .input__postal {
+  margin: 0;
   width: 70px;
 }
 
@@ -755,12 +782,32 @@ button {
 }
 
 .etape4 {
+  width: 80%;
+}
+
+.etape4__div {
   display: flex;
   flex-direction: column;
 }
+@media (min-width: 600px) {
+  .etape4__div {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+.h2_confirmation {
+  text-align: center;
+}
 
 .etape4__img {
-  width: 100%;
+  width: 70%;
+}
+@media (min-width: 600px) {
+  .etape4__img {
+    width: 15%;
+  }
 }
 
 .cacher {

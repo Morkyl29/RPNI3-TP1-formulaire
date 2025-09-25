@@ -81,7 +81,7 @@ function naviguerSuivant(event) {
             lien.classList.add("etapes__item--active");
         }
         if (lienPrecedent) {
-            lienPrecedent.ariaDisabled = "false";
+            lienPrecedent.ariaDisabled = "true";
             lienPrecedent.classList.add("etapes__item--inactive");
             lienPrecedent.classList.remove("etapes__item--active");
         }

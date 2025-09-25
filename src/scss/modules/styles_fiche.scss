@@ -1,10 +1,22 @@
 @use "sass:color";
 @use "../utilitaires/variables";
 
+
+main{
+    padding-bottom: 30px;
+}
 header{
     background-color: blue;
     margin: 0;
     border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+svg{
+    width: 20%;
+    padding: 30px 30px;
 }
 .header_h1{
     text-align: center;
@@ -38,7 +50,19 @@ section{
         width: 40%;
     }
 }
+.montant__div{
+    display: flex;
+    flex-direction: row;
+}
+.montant__input{
+    width: 20%;
+}
+.montant__dollard{
+    width: 80%;
+}
+
 .input__postal{
+    margin: 0;
     width: 70px;
 }
 .input__codeSecu{
@@ -93,9 +117,23 @@ button{
 
 // image de confirmation 
 .etape4{
+    width: 80%;
+}
+.etape4__div{
     display: flex;
     flex-direction: column;
+    @media(min-width: 600px){
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}
+.h2_confirmation{
+    text-align: center;
 }
 .etape4__img{
-    width: 100%;
+    width: 70%;
+    @media(min-width: 600px){
+        width: 15%;
+    }
 }
