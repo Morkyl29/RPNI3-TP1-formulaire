@@ -814,6 +814,10 @@ button {
   display: none;
 }
 
+body {
+  background-color: #F0F4F8;
+}
+
 .erreur {
   color: red;
 }

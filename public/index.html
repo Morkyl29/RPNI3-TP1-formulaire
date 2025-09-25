@@ -57,7 +57,7 @@
             <section id="etape1">
                 <h2 class="h2">Montant</h2>
                 <div class="radio_don">
-                    <input type="radio" class="radio__input" id="donUnique" name="don" value="donUnique">
+                    <input type="radio" class="radio__input" id="donUnique" name="don" value="donUnique" checked>
                     <label class="radio__label" for="donUnique">Don unique</label>
 
                     <input type="radio" class="radio__input" id="donMensuel" name="don" value="donMensuel">
@@ -82,7 +82,7 @@
             <section id="etape2">
                 <h2 class="h2">Information personnelle</h2>
                 <div class="radio_don">
-                    <input type="radio" class="radio__input" id="personnel" name="perso_entreprise" value="Personnel">
+                    <input type="radio" class="radio__input" id="personnel" name="perso_entreprise" value="Personnel" checked>
                     <label class="radio__label" for="personnel">Personnel</label>
     
                     <input type="radio" class="radio__input" id="entreprise" name="perso_entreprise" value="Entreprise">
@@ -107,7 +107,7 @@
                 <input type="email" inputmode="email" id="email" name="email" autocomplete="email" required>
                 <div class="erreur" id="erreur-email" aria-live="polite"></div><br>
     
-                <label class="erreur cacher" for="entreprise" id="label-entreprise" >Nom d'entreprise</label><br>
+                <label class="erreur cacher" for="entrepriseInput" id="label-entreprise" >Nom d'entreprise</label><br>
                 <input type="text" id="entrepriseInput" name="entreprise" class="cacher" required>
                 <div class="erreur" id="erreur-entreprise" aria-live="polite"></div><br>
     
@@ -127,8 +127,8 @@
                     <div class="erreur" id="erreur-ville" aria-live="polite"></div><br>
     
                     <label for="province">Province</label><br>
-                    <select name="province" id="province" required>
-                        <option>Sélectionner la province</option>
+                    <select name="province" id="province">
+                        <option value="">Sélectionner la province</option>
                         <option value="quebec">Quebec</option>
                         <option value="alberta">Alberta</option>
                         <option value="colombie-britannique">Colombie-Britannique</option>

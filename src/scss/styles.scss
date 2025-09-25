@@ -50,6 +50,9 @@
 .cacher{
     display: none;
 }
+body{
+    background-color: variables.$blanc;
+}
 .erreur{
     color: red;
 }
