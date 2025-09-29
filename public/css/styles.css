@@ -742,6 +742,14 @@ section {
   width: 130px;
 }
 
+.nRue_input {
+  width: 80%;
+}
+
+.ville_input {
+  width: 80%;
+}
+
 .input_nCivique {
   width: 130px;
 }
@@ -774,6 +782,11 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.btn_submit {
+  display: block;
+  margin: 2rem auto;
 }
 
 .inactive {

@@ -119,11 +119,11 @@
                     <div class="erreur" id="erreur-nCivique" aria-live="polite"></div><br>
     
                     <label class="erreur" for="nRue" id="label-nRue">Nom de rue</label><br>
-                    <input type="text" id="nRue" name="nRue" autocomplete="address-level3" required><br>
+                    <input type="text" id="nRue" name="nRue" autocomplete="address-level3" class="nRue_input" required><br>
                     <div class="erreur" id="erreur-nRue" aria-live="polite"></div><br>
     
                     <label class="erreur" for="ville" id="label-ville">Ville</label><br>
-                    <input type="text" id="ville" name="ville" autocomplete="address-level2" required><br>
+                    <input type="text" id="ville" name="ville" autocomplete="address-level2" class="ville_input" required><br>
                     <div class="erreur" id="erreur-ville" aria-live="polite"></div><br>
     
                     <label for="province">Province</label><br>
@@ -167,7 +167,7 @@
     
                 <label for="codeSecurite" id="label-codeSecurite">CVC</label><br>
                 <span class="span">1234</span><br>
-                <input type="text" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{4}" class="input__codeSecu"><br>
+                <input type="text" inputmode="numeric" id="codeSecurite" name="codeSecurite" required pattern="[0-9]{3,4}" class="input__codeSecu"><br>
                 <div class="erreur" id="erreur-codeSecurite" aria-live="polite"></div><br>
             
             </section>
