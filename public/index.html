@@ -26,7 +26,7 @@
             </li>
             <li class="ul__li">&rsaquo;</li>
             <li class="etapes__li">
-                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape2">
+                <a class="etapes__item etapes__item--inactive" href="#etape2">
                   <span class="hors-ecran">Infos</span>
                   Infos
                 </a>
@@ -34,7 +34,7 @@
              <li class="ul__li">&rsaquo;</li>
 
             <li class="etapes__li">
-                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape3">
+                <a class="etapes__item etapes__item--inactive" href="#etape3">
                   <span class="hors-ecran">Paiement</span>
                   Paiement
                 </a>
@@ -42,7 +42,7 @@
             <li class="ul__li">&rsaquo;</li>
 
             <li class="etapes__li">
-                <a class="etapes__item etapes__item--inactive" aria-disabled="true" href="#etape4">
+                <a class="etapes__item etapes__item--inactive" href="#etape4">
                   <span class="hors-ecran">Confirmation</span>
                   Confirmation
                 </a>
@@ -55,22 +55,22 @@
         
         <form action="merci.html" id="formulaire" class="formulaire">
             <section id="etape1">
-                <h2 class="h2">Montant</h2>
-                <div class="radio_don">
-                    <input type="radio" class="radio__input" id="donUnique" name="don" value="donUnique" checked>
-                    <label class="radio__label" for="donUnique">Don unique</label>
+                <h2 class="etape1__h2">Montant</h2>
+                <div class="radio">
+                    <input type="radio" class="etape1__radio__input" id="donUnique" name="don" value="donUnique" checked>
+                    <label class="etape1__radio__label" for="donUnique">Don unique</label>
 
-                    <input type="radio" class="radio__input" id="donMensuel" name="don" value="donMensuel">
-                    <label class="radio__label" for="donMensuel">Don mensuel</label>
+                    <input type="radio" class="etape1__radio__input" id="donMensuel" name="don" value="donMensuel">
+                    <label class="etape1__radio__label" for="donMensuel">Don mensuel</label>
                 </div>
                 
     
-                <div>
-                    <label class="erreur" for="montant">Montant</label><br>
+                <div class="etape1__montant">
+                    <label class="etape1__montant__label  erreur" for="montant">Montant</label><br>
                     <span class="span">0,00$</span><br>
-                    <div class="montant__div">
-                        <input type="number" inputmode="decimal" name="montant" id="montant" pattern="^\d+(,\d{2})?$" class="montant__input"  required>
-                        <p class="montant__dollard">$</p>
+                    <div class="etape1__montant__div">
+                        <input type="number" inputmode="decimal" name="montant" id="montant" pattern="^\d+(,\d{2})?$" class="etape1__montant__input"  required>
+                        <p class="etape1__montant__dollard">$</p>
                     </div>
                     
                     <div class="erreur" id="erreur-montant" aria-live="polite"></div><br>
@@ -80,8 +80,8 @@
             <!-- Etape 2 -->
     
             <section id="etape2">
-                <h2 class="h2">Information personnelle</h2>
-                <div class="radio_don">
+                <h2 class="etape2__h2">Information personnelle</h2>
+                <div class="radio">
                     <input type="radio" class="radio__input" id="personnel" name="perso_entreprise" value="Personnel" checked>
                     <label class="radio__label" for="personnel">Personnel</label>
     
@@ -89,17 +89,17 @@
                     <label class="radio__label" for="entreprise">Entreprise</label><br>
                 </div>
     
-                <label class="erreur" for="prenom" id="label-prenom">Prénom</label><br>
+                <label class="erreur" for="prenom" id="etape2__prenom">Prénom</label><br>
                 <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
                 <div class="erreur" id="erreur-prenom" aria-live="polite"></div><br>
     
-                <label class="erreur" for="nom" id="label-nom">Nom</label><br>
+                <label class="erreur" for="nom" id="etape2__nom">Nom</label><br>
                 <input type="text" id="nom" name="nom" autocomplete="family-name" required>
                 <div class="erreur" id="erreur-nom" aria-live="polite"></div><br>
     
-                <label class="erreur" for="telephone" id="label-telephone">Téléphone</label><br>
+                <label class="erreur" for="telephone" id="etape2__telephone">Téléphone</label><br>
                 <span class="span">(000)000-0000</span><br>
-                <input type="text" inputmode="tel" id="telephone" class="input_tel" name="telephone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" autocomplete="tel" required>
+                <input type="text" inputmode="tel" id="telephone" class="etape2__telephone__input" name="telephone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" autocomplete="tel" required>
                 <div class="erreur" id="erreur-telephone" aria-live="polite"></div><br>
     
                 <label class="erreur" for="email" id="label-email">Courriel</label><br>
@@ -152,7 +152,7 @@
             <!-- Etape 3 -->
     
             <section id="etape3">
-                <h2 class="h2">Paiement</h2>
+                <h2 class="etape3__h2">Paiement</h2>
                 <label for="titulaire" id="label-titulaire">Titulaire de la carte</label><br>
                 <input type="text" id="titulaire" name="titulaire" required><br>
                 <div class="erreur" id="erreur-titulaire" aria-live="polite"></div><br>
@@ -175,9 +175,9 @@
             <!-- section 4 confirmation  -->
 
             <section id="etape4" class="etape4">
-                <h2 class="h2_confirmation">Confirmation</h2>
+                <h2 class="h2">Confirmation</h2>
                 <div class="etape4__div">
-                    <img src="../src/img/img_chat.JPG" alt="image chat" class="etape4__img">
+                    <img src="img/img_chat.JPG" alt="image chat" class="etape4__img">
                     <ul class="etape4__ul">
 
                     </ul>

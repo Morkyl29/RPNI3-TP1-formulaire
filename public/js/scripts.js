@@ -1,5 +1,5 @@
 "use strict";
-console.log("halloooooooo");
+// variables globale 
 let etape = 0;
 let btnSuivant;
 let btnPrecedent;
@@ -7,9 +7,10 @@ let btnSoumettre;
 let section;
 let navEtapes;
 let messagesJSON;
+//  Afficher l'étape sinon mettre la classe cacher 
 function afficherEtape(etape) {
     const etapes = document.querySelectorAll('section');
-    console.log(etapes);
+    // console.log(etapes);
     cacherSection();
     if (etape >= 0 && etape < etapes.length) {
         etapes[etape].classList.remove('cacher');
@@ -35,6 +36,7 @@ function afficherEtape(etape) {
         btnSoumettre?.classList.remove('cacher');
     }
 }
+//  Cacher les étapes 
 function cacherSection() {
     section?.forEach((maSection) => {
         maSection.classList.add('cacher');
@@ -52,6 +54,7 @@ function confirmerEtape() {
     const champs = formulaire.querySelectorAll("input, select, textarea");
     champs.forEach((champ) => {
         let valeur = "";
+        // savoir si le champ est selectionné
         if (champ.type === "checkbox" || champ.type === "radio") {
             if (!champ.checked)
                 return; // on saute ceux non cochés
@@ -63,48 +66,56 @@ function confirmerEtape() {
         // On ignore les champs cachés
         if (champ.classList.contains("cacher"))
             return;
+        // créer un li pour le récapitulatif 
         let li = document.createElement("li");
         li.textContent = `${champ.name || champ.id} : ${valeur}`;
         ul.appendChild(li);
     });
 }
+// Naviguer à l'étape suivant 
 function naviguerSuivant(event) {
-    event.preventDefault();
+    event.preventDefault(); // ne pas rafraichir la page 
     if (validerEtape(etape)) {
         const lien = navEtapes[etape + 1].querySelector('a');
         const lienPrecedent = navEtapes[etape].querySelector('a');
         console.log(lien);
+        // si le lien n'est pas precedent alors tu rajoute des class et tu enlève inactive
         if (lien) {
-            lien.ariaDisabled = "false";
+            lien.ariaDisabled = "true";
             lien.classList.remove("etapes__item--inactive");
             lien.classList.remove("inactive");
             lien.classList.add("etapes__item--active");
         }
-        if (lienPrecedent) {
-            lienPrecedent.ariaDisabled = "true";
+        // si le lien peut aller au precedent alors tu rajoute des class inactive
+        else if (lienPrecedent) {
+            lienPrecedent.ariaDisabled = "false";
             lienPrecedent.classList.add("etapes__item--inactive");
             lienPrecedent.classList.remove("etapes__item--active");
         }
-        etape++;
+        etape++; //etape suivante 
+        // si etape est a la dernière alors tu confirme 
         if (etape === 3) {
             confirmerEtape();
         }
         afficherEtape(etape);
     }
 }
+// Naviguer à l'étape précédente 
 function naviguerPrecedent(event) {
     console.log('naviguerPrecedent');
+    // si l'étape est plus grand que 0 alors tu peut réduire 
     if (etape > 0) {
-        etape--;
+        etape--; //etape précédente 
         navEtapes.forEach((li, event) => {
             const lien = li.querySelector('a');
             if (event > etape) {
                 lien.ariaDisabled = "true";
-                // lien.classList.add("inactive");
+                lien.classList.add("inactive");
                 lien.classList.remove("etapes__item--active");
                 lien.classList.add("etapes__item--inactive");
             }
             else {
+                lien.ariaDisabled = "false";
                 lien.classList.remove("inactive");
                 lien.classList.add("etapes__item--active");
                 lien.classList.remove("etapes__item--inactive");
@@ -113,11 +124,14 @@ function naviguerPrecedent(event) {
         afficherEtape(etape);
     }
 }
+// chercher les messages dans le Json 
 async function obtenirMessage() {
     const response = await fetch('objJSONMessages.json');
     messagesJSON = await response.json();
 }
 ;
+// Valider les champs 
+// si il y a une erreur alors tu affiche un message dans le span 
 function validerChamps(champ) {
     let valide = false;
     const id = champ.id; // email
@@ -157,12 +171,14 @@ function validerEmail(champ) {
     const leEmail = champ.value;
     const idMessageErreur = "erreur-" + id; // erreur-email
     const erreurElement = document.getElementById(idMessageErreur);
+    // adresse email suspicieux 
     const tldSuspicieux = [
         '.ru',
         '.cn',
         'click',
         '.party',
     ];
+    // corrige les erreur commune
     const erreursCommune = {
         'hotnail': 'hotmail',
     };
@@ -174,21 +190,21 @@ function validerEmail(champ) {
     if (champ.validity.valueMissing && messagesJSON[id]?.vide) {
         // Champ obligatoire vide (attribut required)
         valide = false;
-        erreurElement.innerText = messagesJSON[id]?.vide;
+        erreurElement.innerText = messagesJSON[id]?.vide; //message s'affiche selon l'id
     }
     else if (champ.validity.typeMismatch && messagesJSON[id]?.type) {
         // Type de données incorrect (email, url, tel, etc.)
         valide = false;
-        erreurElement.innerText = messagesJSON[id]?.type;
+        erreurElement.innerText = messagesJSON[id]?.type; //message s'affiche selon l'id
     }
     else if (champ.validity.patternMismatch && messagesJSON[id]?.pattern) {
         // Ne correspond pas au pattern regex défini
         valide = false;
-        erreurElement.innerText = messagesJSON[id]?.pattern;
+        erreurElement.innerText = messagesJSON[id]?.pattern; //message s'affiche selon l'id
     }
     else if (tldValide && messagesJSON[id].tldSuspicieux) {
         valide = false;
-        erreurElement.innerText = messagesJSON[id].tldSuspicieux;
+        erreurElement.innerText = messagesJSON[id].tldSuspicieux; //message s'affiche selon l'id
     }
     else {
         const erreursCles = Object.keys(erreursCommune);
@@ -199,31 +215,34 @@ function validerEmail(champ) {
     }
     return valide;
 }
+// cocher Entreprise pour afficher un champs 
 function cocherEntreprise() {
     let entreprise = document.getElementById('entreprise');
     let champEntreprise = document.getElementById('entrepriseInput');
     let labelEntreprise = document.getElementById('label-entreprise');
     console.log(entreprise.checked);
+    // si entreprise est check alors on enlève la class cacher sinon on la met
     if (entreprise && entreprise.checked) {
-        console.log('La case est cochée !');
+        // console.log('La case est cochée !');
         champEntreprise.classList.remove('cacher');
         labelEntreprise.classList.remove('cacher');
     }
     else {
-        console.log('La case n\'est pas cochée.');
+        // console.log('La case n\'est pas cochée.');
         champEntreprise.classList.add('cacher');
         labelEntreprise.classList.add('cacher');
     }
 }
+// on valide l'étape pour aller a la suivante 
 function validerEtape(etape) {
     let etapeValide = false;
     switch (etape) {
-        case 0:
+        case 0: //etape 1
             const montantElement = document.getElementById('montant');
             etapeValide =
                 validerChamps(montantElement);
             break;
-        case 1:
+        case 1: //etape 2
             const prenomElement = document.getElementById('prenom');
             const nomElement = document.getElementById('nom');
             const telephoneElement = document.getElementById('telephone');
@@ -232,6 +251,7 @@ function validerEtape(etape) {
             const nCiviqueElement = document.getElementById('nCivique');
             const nRueElement = document.getElementById('nRue');
             const cPostalElement = document.getElementById('cPostal');
+            // on va vérifier chaque élément du formulaire pour la valider 
             etapeValide =
                 validerChamps(prenomElement)
                     && validerChamps(nomElement)
@@ -242,7 +262,7 @@ function validerEtape(etape) {
                     && validerChamps(nRueElement)
                     && validerChamps(cPostalElement);
             break;
-        case 2:
+        case 2: //etape 3
             let titulaireElement = document.getElementById('titulaire');
             ;
             let numCarteElement = document.getElementById('numCarte');
@@ -255,12 +275,14 @@ function validerEtape(etape) {
                     && validerChamps(cvcElement);
             break;
     }
-    return etapeValide;
+    return etapeValide; //retourne l'étape si elle est valide avec true 
 }
 ;
+// on initialise le formulaire
 function initialiser() {
     const formulaire = document.getElementById("formulaire");
     navEtapes = document.querySelectorAll('.etapes__li');
+    // pour chaque etape de la navigation on vas vérifier si il est clickable ou non 
     navEtapes.forEach((li, event) => {
         const lien = li.querySelector('a');
         if (event === 0) {
@@ -275,12 +297,13 @@ function initialiser() {
     if (formulaire) {
         formulaire.noValidate = true;
     }
+    // on va cacher les sections 
     section = document.querySelectorAll('section');
     cacherSection();
     btnSuivant = document.getElementById('bouton-suivant');
     btnPrecedent = document.getElementById('bouton-precedent');
     btnSoumettre = document.getElementById('bouton-soumettre');
-    // btnSuivant.addEventListener('input', validerEtape(etape));
+    // chaque bouton est clickable et appel la fonction associé
     if (btnPrecedent) {
         btnPrecedent.addEventListener('click', naviguerPrecedent);
     }
@@ -297,9 +320,12 @@ function initialiser() {
     if (personnel) {
         personnel.addEventListener("click", cocherEntreprise);
     }
+    // on affiche l'étape 
     afficherEtape(0);
+    // on affiche le message si besoin 
     obtenirMessage();
 }
+// on initialise le formulaire au chaegement de la page 
 document.addEventListener('DOMContentLoaded', () => {
     initialiser();
 });

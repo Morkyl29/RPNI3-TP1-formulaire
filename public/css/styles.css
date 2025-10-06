@@ -716,16 +716,27 @@ section {
   }
 }
 
-.montant__div {
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.etape1__montant__label {
+  width: 90%;
+}
+
+.etape1__montant__div {
   display: flex;
   flex-direction: row;
 }
 
-.montant__input {
+.etape1__montant__input {
   width: 20%;
 }
 
-.montant__dollard {
+.etape1__montant__dollard {
   width: 80%;
 }
 
@@ -757,17 +768,6 @@ section {
 input {
   width: 100%;
   margin: auto;
-}
-
-.radio_don {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 30px 0;
-}
-
-.radio__label {
-  width: 90%;
 }
 
 legend {
@@ -810,7 +810,7 @@ button {
   }
 }
 
-.h2_confirmation {
+h2 {
   text-align: center;
 }
 
